@@ -57,10 +57,19 @@ const listSalesById = async (id) => {
   return newArray;
 };
 
+const updateSalesById = async (id, name) => {
+  const [products] = await connection.execute(
+    'UPDATE StoreManager.products SET name = ? WHERE id = ?', [name, id],
+  );
+  console.log(id, name);
+  return products;
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
   addProduct,
   listAllSales,
   listSalesById,
+  updateSalesById,
 };

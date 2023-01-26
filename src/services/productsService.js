@@ -43,10 +43,21 @@ const listSalesById = async (id) => {
   return { type: null, message: product };
 };
 
+const updateSalesById = async (id, name) => {
+  const error = newProductValidation(name);
+  if (error.type) return error;
+  const product = await productsModel.updateSalesById(Number(id), name);
+  if (product.changedRows === 0) {
+    return { type: 'NOT_FOUND', message: 'Product not found' };
+  }
+  return { type: null, message: { id, name } };
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
   addProduct,
   listAllSales,
   listSalesById,
+  updateSalesById,
 };

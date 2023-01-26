@@ -4,13 +4,18 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:3000/sales",
-    "url": "localhost:3000/sales/1",
-    "method": "GET",
+    "url": "localhost:3000/products/999",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2023-01-26T00:57:26.016Z",
-    "modified": "2023-01-26T11:29:24.386Z",
+    "modified": "2023-01-26T12:40:47.801Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n \"name\": \"harry potter\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]
