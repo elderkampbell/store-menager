@@ -51,6 +51,15 @@ const updateSalesById = async (req, res) => {
   res.status(200).json(message);
 };
 
+const deleteSalesById = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await productsService.deleteSalesById(id);
+  if (type) {
+    return res.status(mapError(type)).json({ message });
+  }
+  res.status(204).json(message);
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
@@ -58,4 +67,5 @@ module.exports = {
   listAllSales,
   listSalesById,
   updateSalesById,
+  deleteSalesById,
 };

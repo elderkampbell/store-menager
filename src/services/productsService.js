@@ -53,6 +53,14 @@ const updateSalesById = async (id, name) => {
   return { type: null, message: { id, name } };
 };
 
+const deleteSalesById = async (id) => {
+  const product = await productsModel.deleteSalesById(Number(id));
+  if (product.affectedRows === 0) {
+    return { type: 'NOT_FOUND', message: 'Product not found' };
+  }
+  return { type: null, message: { id } };
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
@@ -60,4 +68,5 @@ module.exports = {
   listAllSales,
   listSalesById,
   updateSalesById,
+  deleteSalesById,
 };
