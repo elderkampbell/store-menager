@@ -26,8 +26,24 @@ const addProduct = async (req, res) => {
   return res.status(201).json(product.message);
 };
 
+const listAllSales = async (_req, res) => {
+  const { message } = await productsService.listAllSales();
+
+  res.status(200).json(message);
+};
+
+const listSalesById = async (req, res) => {
+  const { type, message } = await productsService.listSalesById(req.params.id);
+  if (type) {
+    return res.status(mapError(type)).json({ message });
+  }
+  res.status(200).json(message);
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
   addProduct,
+  listAllSales,
+  listSalesById,
 };

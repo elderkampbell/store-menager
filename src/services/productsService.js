@@ -27,8 +27,26 @@ const addProduct = async (name) => {
   return { type: null, message: newProduct };
 };
 
+const listAllSales = async () => {
+  const products = await productsModel.listAllSales();
+  return { type: null, message: products };
+};
+
+const listSalesById = async (id) => {
+  const product = await productsModel.listSalesById(id);
+  if (product.length === 0) {
+    return {
+      type: 'NOT_FOUND',
+      message: 'Sale not found',
+    };
+  }
+  return { type: null, message: product };
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
   addProduct,
+  listAllSales,
+  listSalesById,
 };
